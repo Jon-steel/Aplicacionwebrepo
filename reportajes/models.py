@@ -15,3 +15,31 @@ class reportaje(models.Model):
     def __str__(self):
         texto = "{0}({1})({2} Reportero)"
         return texto.format(self.disco, self.camarografo, self.reportero)
+
+class reporteross(models.Model):
+    id_reportero  = models.CharField(primary_key=True,max_length=20)
+    nombre = models.CharField(max_length=100)
+    telefono = models.CharField(max_length=10)
+    correo = models.CharField(max_length=100)
+    def __str__(self):
+        texto = "{0}({1})"
+        return texto.format(self.id_reportero, self.nombre)
+
+class camarografo(models.Model):
+    id_camarografo = models.CharField(primary_key=True,max_length=20)
+    nombre = models.CharField(max_length=100)
+    telefono = models.CharField(max_length=10)
+    correo = models.CharField(max_length=100)
+    def __str__(self):
+        texto = "{0}({1})"
+        return texto.format(self.id_camarografo, self.nombre)
+
+class usuarios(models.Model):
+    id_usuario = models.CharField(primary_key=True,max_length=20)
+    nombre_usuario = models.CharField(max_length=100)
+    telefono = models.CharField(max_length=100)
+    correo = models.CharField(max_length=100)
+    categoria = models.CharField(max_length=50)
+    def __str__(self):
+        texto = "{0}({1})"
+        return texto.format(self.id_usuario,self.nombre_usuario)

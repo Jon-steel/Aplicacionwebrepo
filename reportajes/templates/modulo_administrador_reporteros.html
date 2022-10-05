@@ -1,0 +1,116 @@
+{% extends "./sesiones.html" %}
+{% block title %} Sistema Mexiquense de Medios Publicos - Reporteros {% endblock %}
+{% block body %}
+
+<h2><center>Lista de Reporteros</center></h2>
+
+<div id="content" class="p-4 p-md-0 justify-content-center">
+    <div class="form-group row py-2 justify-content-center">
+        <div class="col-sm-2">
+            <a class="btn btn-danger btn-icon-split active" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <samp class="icon text-white-50">
+                    <i class="fas fa-plus"></i>
+                </samp>
+                <span class="text">NUEVO</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="container pd-3">
+    <div class="row justify-content-center">
+        <div class="col-sm-12 col-md-10 col-lg-12 col-xl-12">
+            <div class="table-responsive">
+            <table class="table table-striped table-inverse py-3" id="tabla_reporteros">
+                <thead class="table-inverse">
+                    <tr class="text-center">
+                        <th>Numero</th>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Telefono</th>
+                        <th>Correo</th>
+                        <th>Gestionar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for c in reportajes %}
+                    <tr class="text-center">
+                        <td>{{forloop.counter}}</td>
+                        <td>{{c.id_reportero}}</td>
+                        <td id="nombre{{c.id_reportero}}">{{c.nombre}}</td>
+                        <td id="telefono{{c.id_reportero}}">{{c.telefono}}</td>
+                        <td id="correo{{c.id_reportero}}">{{c.correo}}</td>
+                        <td>
+                        <button id="actualizar" value="{{c.disco}}" class="btn btn-info px-3 me-2 actualizar">
+                            <i class="fas fa-fw fa-edit"></i>
+                        </button>
+                        <button id="eliminar" value="{{c.disco}}" class="btn btn-danger px-3 me-2">
+                            <i class="fas fa-fw fa-trash-alt"></i>
+                        </button>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- registro de reporteros -->
+
+<div class="row justify-content-center">
+    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-8">
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header justify-content-center">
+                        <div class="justify-content-center" id="contenedor">
+                            <img class="imgform" id="titulo" src="../static/image/AMX.svg" alt="">
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/alta_report/" method="post"> {% csrf_token %}
+                            <div class="form-group.row.py-2">
+                                <h3 class="text-center">Formulario de Registro</h3>
+                            </div>
+                            <div class="form-group row py-1">
+                                <label for="id_reportero" class="col-sm-5 col-form-label text-center">Indentificador del Reportero</label>
+                                <div class="col-sm-5"><input type="text" class="form-control" name="id_reportero"
+                                        id="id_reportero" placeholder="Ingresa el codigo del Taller" minlength="10"
+                                        maxlength="20" required></div>
+                            </div>
+                            <div class="form-group row py-0">
+                                <label for="r_nombre" class="col-sm-5 col-form-label text-center">Nombre Completo</label>
+                                <div class="col-sm-5"><input type="text" class="form-control" name="r_nombre"
+                                        id="r_nombre" placeholder="Ingresar Nombre" minlength="10"
+                                        maxlength="50" required></div>
+                            </div>
+                            <div class="form-group row py-0">
+                                <label for="r_telefono" class="col-sm-5 col-form-label text-center">Numero Telefonico</label>
+                                <div class="col-sm-5"><input type="text" class="form-control" name="r_telefono"
+                                        id="r_telefono" placeholder="Ingresar Telefono" minlength="10"
+                                        maxlength="10" required></div>
+                            </div>
+                            <div class="form-group row py-0">
+                                <label for="r_correo" class="col-sm-5 col-form-label text-center">Correo Electronico</label>
+                                <div class="col-sm-5"><input type="text" class="form-control" name="r_correo"
+                                        id="r_correo" placeholder="Ingrese su Correo" ></div>
+                            </div>
+
+                            <div class="modal-footer justify-content-center">
+                                <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">CANCELAR</button>
+                                <button type="submit" class="btn btn-primary"> REGISTRAR</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

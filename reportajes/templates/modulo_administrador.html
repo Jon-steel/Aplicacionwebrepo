@@ -7,11 +7,11 @@
 <div id="content" class="p-4 p-md-0 justify-content-center">
     <div class="form-group row py-2 justify-content-center">
         <div class="col-sm-2">
-            <a class="btn btn-danger btn-icon-split active" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                <samp class="icon text-white-50">
-                    <i class="fas fa-plus"></i>
+            <a class="btn btn-icon-split active" style="background-color: #A80C0C;" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <samp class="icon text-white-50" style="background-color:#FF2424;">
+                    <i class="fas fa-plus" style="color: #ffffff;"></i>
                 </samp>
-                <span class="text">NUEVO</span>
+                <span class="text" style="color: #fff;">NUEVO</span>
             </a>
         </div>
     </div>
@@ -24,6 +24,7 @@
             <table class="table table-striped table-inverse py-3" id="tabla_reportajes">
                 <thead class="table-inverse">
                     <tr class="text-center">
+                        <th>Numero</th>
                         <th>Disco</th>
                         <th>Reportero</th>
                         <th>Camarografo</th>
@@ -38,14 +39,15 @@
                 <tbody>
                 {% for c in reportajes %}
                     <tr class="text-center">
+                        <td>{{forloop.counter}}</td>
                         <td>{{c.disco}}</td>
-                        <td>{{c.reportero}}</td>
-                        <td>{{c.camarografo}}</td>
-                        <td>{{c.clip}}</td>
-                        <td>{{c.clipdiferetes}}</td>
-                        <td>{{c.descripcion}}</td>
-                        <td>{{c.tema}}</td>
-                        <td>{{c.estatus}}</td>
+                        <td id="reportero{{c.disco}}">{{c.reportero}}</td>
+                        <td id="camarografo{{c.disco}}">{{c.camarografo}}</td>
+                        <td id="clip{{c.disco}}">{{c.clip}}</td>
+                        <td id="clipdiferetes{{c.disco}}">{{c.clipdiferetes}}</td>
+                        <td id="descripcion{{c.disco}}">{{c.descripcion}}</td>
+                        <td id="tema{{c.disco}}">{{c.tema}}</td>
+                        <td id="estatus{{c.disco}}">{{c.estatus}}</td>
                         <td>
                         <button id="actualizar" value="{{c.disco}}" class="btn btn-info px-3 me-2 actualizar">
                             <i class="fas fa-fw fa-edit"></i>
@@ -72,12 +74,12 @@
             <div class="modal-content">
                 <div class="modal-header justify-content-center">
                     <div class="justify-content-center" id="contenedor">
-                        <h5 class="text-center" id="titulo">AMX Noticias</h5> 
+                        <img class="imgform" id="titulo" src="../static/image/AMX.svg" alt="">
                     </div>
                 </div>
                 <div class="modal-body">
                     <form action="/alta_reportaje/" method="post"> {% csrf_token %}
-                        <div class="form-group.row.py-2">
+                        <div class="form-group.row.py-0">
                             <h3 class="text-center">Formulario de Registro</h3>
                         </div>
                         <div class="form-group row">
@@ -163,7 +165,7 @@
                             <select name="n_estatus" id="n_estatus" aria-label="Default select" class="form-control" required>
                                 <option value="">Seleccionar una opcion</option>
                                 <option value="1">Califiado</option>
-                                <option value="2">No Calificado</option>
+                                <option value="2">En Espera</option>
                             </select>
                             </div>
                         </div>
@@ -207,6 +209,55 @@
             </div>
         </div>
     </div>
+</div>
+
+<!-- Eliminar registro -->
+<div class="modal fade" id="eliminar_reportaje" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header justify-content-center">
+            <div class="justify-content-center" id="contenedor">
+                <h5 class="modal-title" id="staticBackdropLabel">ELIMINAR REGISTRO</h5>
+            </div>
+        </div>
+        <div class="modal-body">
+            <form action="/eliminar_reportaje/" method="post">{% csrf_token %}
+                <div class="form-group row py-2">
+                    <label for="id_card" class="col-sm-3 col-form-label text-center">Id de Reportaje: </label>
+                    <div class="col-sm-9">
+                        <input type="text" name="id_card_eliminar" id="id_card_eliminar"
+                            class="form-control" readonly placeholder="ingrese el codigo del reportaje"
+                            minlength="8" maxlength="8" required>
+                    </div>
+                </div>
+                <div class="form-group row py-2">
+                    <label for="n_reportero" class="col-sm-3 col-form-label text-center">Nombre de Reportero:
+                    </label>
+                    <div class="col-sm-9">
+                        <input type="text" name="n_reportero_eliminar" id="n_reportero_eliminar" class="form-control"
+                            readonly placeholder="ingrese el nombre del reportero" minlength="8" maxlength="8"
+                            required>
+                    </div>
+                </div>
+                <div class="form-group row py-2">
+                    <label for="n_estatus" class="col-sm-3 col-form-label text-center">Creditos de Taller:
+                    </label>
+                    <div class="col-sm-9">
+                        <input type="text" name="n_estatus_eliminar" id="n_estatus_eliminar" class="form-control"
+                            readonly placeholder="Obtencion de estatus" minlength="8" maxlength="8"
+                            required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Eliminar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
 </div>
 
 {% endblock %}

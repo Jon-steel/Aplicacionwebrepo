@@ -1,25 +1,4 @@
-:root{
-    --sw-border-color: #eeeeee;
-    --sw-toolbar-btn-color: #ffffff;
-    --sw-toolbar-btn-background-color: #80ba26;
-    --sw-anchor-default-primary-color: #f8f9fa;
-    --sw-anchor-default-secondary-color: #b0b0b1;
-    --sw-anchor-active-primary-color: #80ba26;
-    --sw-anchor-active-secondary-color: #ffffff;
-    --sw-anchor-done-primary-color: #4b7808;
-    --sw-anchor-done-secondary-color: #fefefe;
-    --sw-anchor-disabled-primary-color: #f8f9fa;
-    --sw-anchor-disabled-secondary-color: #dbe0e5;
-    --sw-anchor-error-primary-color: #dc3545;
-    --sw-anchor-error-secondary-color: #ffffff;
-    --sw-anchor-warning-primary-color: #ffc107;
-    --sw-anchor-warning-secondary-color: #ffffff;
-    --sw-progress-color: #8dd81d;
-    --sw-progress-background-color: #ffffff;
-    --sw-loader-color: #8dd81d;
-    --sw-loader-background-color: #f8f9f8;
-    --sw-loader-background-wrapper-color: rgba(255,255,255,0.7);
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 *
 {
     margin: 0;
@@ -28,12 +7,86 @@
 }
 .imgnav{
     width: 75%;
-    /* height: 100px; */
     display: flex;
     align-items: center;
     margin-top: 2em;
 }
-/* .imghome{
-    width: 20%;
-    height: 20%;
-} */
+.imgform{
+    width: 50%;
+    display: flex;
+    margin: auto;
+}
+
+
+  #wrapper .nav-list{
+    margin-top: 20px;
+    height: 100%;
+  }
+  #wrapper li{
+    position: relative;
+    margin: 8px 0;
+    list-style: none;
+  }
+  #wrapper li .bot{
+    height: 50px;
+    line-height: 50px;
+    font-size: 18px;
+    border-radius: 12px;
+  }
+  #wrapper li.profile{
+    position: fixed;
+    height: 60px;
+    width: 78px;
+    left: 0;
+    bottom: -8px;
+    padding: 10px 14px;
+    background: #E40033;
+    /* transition: all 0.5s ease; */
+    overflow: hidden;
+  }
+  #wrapper.open li.profile{
+    width: 224px;
+  }
+  #wrapper li.profile{
+    width: 6.9%;
+  }
+  #wrapper li .profile-details{
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+  #wrapper li .navusuario{
+    height: 45px;
+    width: 45px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-right: 10px;
+  }
+  #wrapper li.profile .name,
+  #wrapper li.profile .job{
+    font-size: 15px;
+    font-weight: 400;
+    color: #fff;
+    white-space: nowrap;
+  }
+  #wrapper li.profile .job{
+    font-size: 12px;
+  }
+  #wrapper .profile #log_out{
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    background: #E40033;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 0px;
+    transition: all 0s ease;
+  }
+  #wrapper.open .profile #log_out{
+    width: 50px;
+    background: none;
+  }
+  
+  
