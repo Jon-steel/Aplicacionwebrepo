@@ -9,8 +9,11 @@ def home(request):
 def session_administrador(request):
     return render(request, "sesiones.html")
     
-# def session_camarografos(request):
-#     return render(request, "sesiones_camarografos.html")
+def session_camarografos(request):
+    return render(request, "sesiones_camarografos.html")
+
+def session_usuarios(request):
+    return render(request, "sesiones_usuarios.html")
 
 def administrador(request):
     lista_reportajes = reportaje.objects.all()

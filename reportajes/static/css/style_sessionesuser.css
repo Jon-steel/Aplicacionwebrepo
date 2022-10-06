@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.imgnav{
+    width: 75%;
+    display: flex;
+    align-items: center;
+    margin-top: 2em;
+}
+.imgform{
+    width: 50%;
+    display: flex;
+    margin: auto;
+}
+
+
+  #wrapper .nav-list{
+    margin-top: 20px;
+    height: 100%;
+  }
+  #wrapper li{
+    position: relative;
+    margin: 8px 0;
+    list-style: none;
+  }
+  #wrapper li .bot{
+    height: 50px;
+    line-height: 50px;
+    font-size: 18px;
+    border-radius: 12px;
+  }
+  #wrapper li.profile{
+    position: fixed;
+    height: 60px;
+    width: 78px;
+    left: 0;
+    bottom: -8px;
+    padding: 10px 14px;
+    background: #FF870C;
+    /* transition: all 0.5s ease; */
+    overflow: hidden;
+  }
+  #wrapper.open li.profile{
+    width: 224px;
+  }
+  #wrapper li.profile{
+    width: 6.9%;
+  }
+  #wrapper li .profile-details{
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+  #wrapper li .navusuario{
+    height: 45px;
+    width: 45px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-right: 10px;
+  }
+  #wrapper li.profile .name,
+  #wrapper li.profile .job{
+    font-size: 15px;
+    font-weight: 400;
+    color: #fff;
+    white-space: nowrap;
+  }
+  #wrapper li.profile .job{
+    font-size: 12px;
+  }
+  #wrapper .profile #log_out{
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    background: #FF870C;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 0px;
+    transition: all 0s ease;
+  }
+  #wrapper.open .profile #log_out{
+    width: 50px;
+    background: none;
+  }
+  
+  
