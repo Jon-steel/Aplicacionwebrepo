@@ -103,6 +103,22 @@ form.sign-in-form {
   font-weight: 500;
 }
 
+.input-field .option{
+  outline: none;
+  border: none;
+  border-radius: inherit;
+  font-weight: 600;
+  line-height: 55px;
+  color: #acacac;
+  transition: 0.5s;
+  font-size: 1.1rem;
+  background-color: #f0f0f0;
+}
+.input-field option::placeholder{
+  color: #aaa;
+  font-weight: 500;
+}
+
 .social-text {
   padding: 0.7rem 0;
   font-size: 1rem;
@@ -181,11 +197,13 @@ a{
 }
 
 .image {
-  width: 100%;
+  width: 97%;
   height: 100%;
   transition: transform 1.1s ease-in-out;
   transition-delay: 0.4s;
 }
+
+
 
 .panel {
   display: flex;

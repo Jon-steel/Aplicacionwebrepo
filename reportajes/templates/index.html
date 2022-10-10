@@ -8,11 +8,11 @@
           <h2 class="title">Iniciar sesión</h2>
           <div class="input-field">
             <i class="fas fa-user"></i>
-            <input type="text" placeholder="Nombre de Usuario" />
+            <input type="text" placeholder="Nombre de Usuario" id=""/>
           </div>
           <div class="input-field">
             <i class="fas fa-lock"></i>
-            <input type="password" placeholder="Contraseña" />
+            <input type="password" placeholder="Contraseña" id="" />
           </div>
             <a href="{% url 'session_administrador' %}" type="sumbit" class="btn btn-secondary">Ingresar</a>    
           <p class="social-text">Paginas Oficiales</p>
@@ -35,20 +35,31 @@
           <h2 class="title">Registrate</h2>
           <div class="input-field">
             <i class="fas fa-user"></i>
-            <input type="text" placeholder="Nombre de Usuario" />
+            <input type="text" placeholder="Nombre de Usuario" id="u_usuario"/>
           </div>
           <div class="input-field">
             <i class="fas fa-envelope"></i>
-            <input type="email" placeholder="Correo" />
+            <input type="email" placeholder="Correo" id="u_correo" />
           </div>
           <div class="input-field">
             <i class="fas fa-phone"></i>
-            <input type="tel" placeholder="Telefono" />
+            <input type="tel" placeholder="Telefono" id="u_telefono"/>
           </div>
           <div class="input-field">
             <i class="fas fa-lock"></i>
-            <input type="password" placeholder="Contraseña" />
+            <input type="password" placeholder="Contraseña" id="u_contrasena"/>
           </div>
+          <div class="input-field">
+            <i class="fas fa-user"></i>
+            <select class="option" name="u_categoria" id="u_categoria">
+              <option value="" selected>Elige un opcion</option>
+              <option value="Servicio Social">Servicio Social</option>
+              <option value="Practicante">Practicante</option>
+              <option value="Trabajador">Trabajador</option>
+            </select>
+            <!-- <input type="text" id="u_categoria"/>   -->
+          </div>
+          
           <input type="submit" class="btn" value="Registrarce" />
           <p class="social-text">Paginas Oficiales</p>
           <div class="social-media">

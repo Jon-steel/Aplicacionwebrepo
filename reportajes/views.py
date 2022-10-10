@@ -79,12 +79,31 @@ def alta_report(request):
     telefono = request.POST['r_telefono']
     correo = request.POST['r_correo']
 
-    report=reporteross.objects.create(
+    reporteross.objects.create(
         id_reportero=id_reportero,
         nombre=nombre,
         telefono=telefono,
         correo=correo
     )
+    return redirect(administradorreporteros)
+
+def actualizar_report(request):
+    id_reportero = request.POST['id_reportero_a']
+    nombre = request.POST['r_nombre_a']
+    telefono = request.POST['r_telefono_a']
+    correo = request.POST['r_correo_a']
+
+    reportero = reporteross.objects.get(id_reportero=id_reportero)
+    reportero.nombre = nombre
+    reportero.telefono = telefono
+    reportero.correo = correo   
+    reportero.save()
+    return redirect(administradorreporteros)
+
+def eliminar_report(request):
+    id_reportero = request.POST['id_reportero_e']
+    reportero = reporteross.objects.get(id_reportero=id_reportero)
+    reportero.delete()
     return redirect(administradorreporteros)
 
 def alta_camarografo(request):
@@ -93,10 +112,45 @@ def alta_camarografo(request):
     telefono = request.POST['c_telefono']
     correo = request.POST['c_correo']
 
-    camarog=camarografo.objects.create(
+    camarografo.objects.create(
         id_camarografo=id_camarografo,
         nombre=nombre,
         telefono=telefono,
         correo=correo
     )
     return redirect(administradorcamarografos)
+
+def actualizar_camarografo(request):
+    id_camarografo = request.POST['id_camarografo_a']
+    nombre = request.POST['c_nombre_a']
+    telefono = request.POST['c_telefono_a']
+    correo = request.POST['c_correo_a']
+
+    camaro = camarografo.objects.get(id_camarografo=id_camarografo)
+    camaro.nombre = nombre
+    camaro.telefono = telefono
+    camaro.correo = correo   
+    camaro.save()
+    return redirect(administradorcamarografos) 
+
+def eliminar_camarografo(request):
+    id_camarografo = request.POST['id_camarografo_e']
+    camaro = camarografo.objects.get(id_camarografo=id_camarografo)
+    camaro.delete()
+    return redirect(administradorcamarografos) 
+
+def alta_usuarios(request):
+    # id_usuario = request.POST['id_usuario']
+    nombre_usuario = request.POST['u_usuario']
+    telefono = request.POST['u_telefono']
+    correo = request.POST['u_correo']
+    contrasena = request.POST('u_contrasena')
+    categoria = request.POST['u_categoria']
+
+    usuarios.objects.create(
+        nombre_usuario=nombre_usuario,
+        telefono=telefono,
+        correo=correo,
+        categoria=categoria
+    )
+    return redirect(home)

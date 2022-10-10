@@ -41,10 +41,10 @@
                         <td id="telefono{{c.id_camarografo}}">{{c.telefono}}</td>
                         <td id="correo{{c.id_camarografo}}">{{c.correo}}</td>
                         <td>
-                        <button id="actualizar" value="{{c.disco}}" class="btn btn-info px-3 me-2 actualizar">
+                        <button id="actualizarca" value="{{c.id_camarografo}}" class="btn btn-info px-3 me-2 actualizar">
                             <i class="fas fa-fw fa-edit"></i>
                         </button>
-                        <button id="eliminar" value="{{c.disco}}" class="btn btn-danger px-3 me-2">
+                        <button id="eliminarca" value="{{c.id_camarografo}}" class="btn btn-danger px-3 me-2">
                             <i class="fas fa-fw fa-trash-alt"></i>
                         </button>
                         </td>
@@ -112,5 +112,108 @@
     </div>
 </div>
 
+<!-- editar formulario de camarografos -->
+<div class="row justify-content-center">
+    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-8">
+        <div class="modal fade" id="actualizar_camarografo" data-bs-backdrop="static" data-bs-keyboard="false"
+            tabindex="-1" aria-labelledby="staticBackdropLabel1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header justify-content-center">
+                        <div class="justify-content-center" id="contenedor">
+                            <img class="imgform" id="titulo" src="../static/image/AMX.svg" alt="">
+                        </div>
+                        <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+                    </div>
+                    <div class="modal-body">
+                        <form action="/actualizar_camarografo/" method="POST">{% csrf_token %}
+
+                            <div class="form-group row">
+                                <label for="id_camarografo" class="col-sm-3 col-form-label text-center">Indentificador:
+                                </label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" readonly name="id_camarografo_a"
+                                        id="id_camarografo_a" placeholder=""
+                                        minlength="8" maxlength="8" required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="c_nombre" class="col-sm-3 col-form-label text-center">Nombre de
+                                    camarografo: </label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="c_nombre_a"
+                                        id="c_nombre_a" placeholder=""
+                                        minlength="4" maxlength="100" required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="c_telefono" class="col-sm-3 col-form-label text-center">Numero de telefono: </label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="c_telefono_a"
+                                        id="c_telefono_a" placeholder=""
+                                        minlength="4" maxlength="100" required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="c_correo" class="col-sm-3 col-form-label text-center">Correo Electronico: </label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="c_correo_a"
+                                        id="c_correo_a" placeholder=""
+                                        minlength="4" maxlength="100" required>
+                                </div>
+                            </div>
+                            <div class="modal-footer justify-content-center">
+                                <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">CANCELAR</button>
+                                <button type="submit" class="btn btn-primary">ACTUALIZAR</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- eliminar formualario camarografos -->
+<div class="modal fade" id="eliminar_camarografo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header justify-content-center">
+                    <div class="justify-content-center" id="contenedor">
+                        <img class="imgform" id="titulo" src="../static/image/AMX.svg" alt="">
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <form action="/eliminar_camarografo/" method="post">{% csrf_token %}
+                        <div class="form-group row">
+                            <label for="id_camarografo" class="col-sm-3 col-form-label text-center">Indentificador: </label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" readonly name="id_camarografo_e"
+                                    id="id_camarografo_e" placeholder="" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="c_nombre" class="col-sm-3 col-form-label text-center">Nombre de
+                                Camarografo:</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" readonly name="c_nombre_e"
+                                    id="c_nombre_e" placeholder="" required>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCELAR</button>
+                            <button type="submit" class="btn btn-primary">ELIMINAR</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
 
 {% endblock %}
