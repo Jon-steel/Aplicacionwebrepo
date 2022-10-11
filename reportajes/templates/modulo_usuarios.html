@@ -1,0 +1,214 @@
+{% extends "./sesiones_usuarios.html" %}
+{% block title %} Sistema Mexiquense de Medios Publicos - Usuarios {% endblock %}
+{% block body %}
+
+<h2><center>Lista de Reportajes</center></h2>
+
+<!-- <div id="content" class="p-4 p-md-0 justify-content-center">
+    <div class="form-group row py-2 justify-content-center">
+        <div class="col-sm-2">
+            <a class="btn btn-icon-split active" style="background-color: #FF6000;" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <samp class="icon text-white-50" style="background-color:#c04b03">
+                    <i class="fas fa-plus" style="color: #ffffff;"></i>
+                </samp>
+                <span class="text" style="color: #fff;">NUEVO</span>
+            </a>
+        </div>
+    </div>
+</div> -->
+
+<div class="container pd-3">
+    <div class="row justify-content-center">
+        <div class="col-sm-12 col-md-10 col-lg-12 col-xl-12">
+            <div class="table-responsive">
+            <table class="table table-striped table-inverse py-3" id="tabla_reportajes">
+                <thead class="table-inverse">
+                    <tr class="text-center">
+                        <th>Numero</th>
+                        <th>Disco</th>
+                        <th>Reportero</th>
+                        <th>Camarografo</th>
+                        <th>Clips</th>
+                        <th>Clips Distintos</th>
+                        <th>Descripicion</th>
+                        <th>Tema</th>
+                        <th>Estatus</th>
+                        <th>Gestionar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for c in reportajes %}
+                    <tr class="text-center">
+                        <td>{{forloop.counter}}</td>
+                        <td>{{c.disco}}</td>
+                        <td id="reportero{{c.disco}}">{{c.reportero}}</td>
+                        <td id="camarografo{{c.disco}}">{{c.camarografo}}</td>
+                        <td id="clip{{c.disco}}">{{c.clip}}</td>
+                        <td id="clipdiferetes{{c.disco}}">{{c.clipdiferetes}}</td>
+                        <td id="descripcion{{c.disco}}">{{c.descripcion}}</td>
+                        <td id="tema{{c.disco}}">{{c.tema}}</td>
+                        <td id="estatus{{c.disco}}">{{c.estatus}}</td>
+                        <td>
+                        <button id="actualizar" value="{{c.disco}}" class="btn btn-info px-3 me-2 actualizar">
+                            <i class="fas fa-fw fa-edit"></i>
+                        </button>
+                        <!-- <button id="eliminar" value="{{c.disco}}" class="btn btn-danger px-3 me-2">
+                            <i class="fas fa-fw fa-trash-alt"></i>
+                        </button> -->
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Registro de Datos -->
+<div class="row justify-content-center">
+    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-8">
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header justify-content-center">
+                    <div class="justify-content-center" id="contenedor">
+                        <img class="imgform" id="titulo" src="../static/image/AMX.svg" alt="">
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <form action="/alta_reportajecamarografo/" method="post"> {% csrf_token %}
+                        <div class="form-group.row.py-0">
+                            <h3 class="text-center">Formulario de Registro</h3>
+                        </div>
+                        <div class="form-group row">
+                            <label for="id_card" class="col-sm-5 col-form-label text-center">Indentificador de
+                                Registro</label>
+                            <div class="col-sm-7"><input type="text" class="form-control" name="id_card"
+                                    id="id_card" placeholder="Ingrese el Indentificador" minlength="9"
+                                    maxlength="9" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-6">
+                            <label for="n_reportero" class="col-form-label text-center">Nombre del Reportero</label>
+                            <select name="n_reportero" id="n_reportero" aria-label="Default select" class="form-control" required>
+                                <option value="">Seleccionar Reportero</option>
+                                <option value="1">Marisol Ordóñez</option>
+                                <option value="2">Oyuky Gomez</option>
+                                <option value="3">Melisa López</option>
+                                <option value="4">Jerzayn Frausto</option>
+                                <option value="5">Jesús Lopez</option>
+                                <option value="6">Raúl García</option>
+                                <option value="7">Edgar Galicia</option>
+                              </select>
+                            </div>
+
+                        <div class="col-6">
+                            <label for="n_camarografo" class=" col-form-label text-center">Camarografo</label>
+                            <select name="n_camarografo" id="n_camarografo" aria-label="Default select" class="form-control" required>
+                                <option value="">Seleccionar Camarografo</option>
+                                <option value="1">Jesús García</option>
+                                <option value="2">Cristian Sánchez</option>
+                                <option value="3">Cristian Moreno</option>
+                                <option value="4">Veronica Mondragón</option>
+                                <option value="5">Efrén Moreno</option>
+                                <option value="6">Alvaro Zagaceta</option>
+                                <option value="7">Francisco Campos</option>
+                                <option value="8">Félix Montesinos</option>
+                                <option value="9">Alfonso Díaz</option>
+                                <option value="10">Carlos Reynoso</option>
+                                <option value="11">José Luis Espinosa</option>
+                                <option value="12">Daniel Garduño</option>
+                              </select>
+                        </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                            <label for="n_fecha" class="col-sm-12 col-form-label text-center">Fecha de registro</label>
+                            <div class="col-sm-12">
+                                <div class="input-group date" id="datepicker">
+                                    <input type="text" class="form-control" id="n_fecha" name="n_fecha">
+                                    <span class="input-group-append">
+                                        <span class="input-group-text bg-white">
+                                            <i class="fa fa-calendar-alt"></i>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-6">
+                                <label for="n_clip" class="col-sm-12 col-form-label">Clips</label>
+                                <input type="text" class="form-control" id="n_clip" name="n_clip">
+                            </div>
+
+                            <div class="col-6">
+                                <label for="n_clipdiferentes" class="col-sm-12 col-form-label">Clip Distinto</label>
+                                <input type="text" class="form-control" id="n_clipdiferentes" name="n_clipdiferentes">
+                            </div>
+
+                            <div class="col-12">
+                                <label for="n_descripcion" class="col-sm-12 col-form-label">Descripcion</label>
+                                <input type="text" class="form-control" id="n_descripcion" name="n_descripcion">
+                            </div>
+
+                            <div class="col-6">
+                                <label for="n_tema" class="col-sm-12 col-form-label">Tema</label>
+                                <input type="text" class="form-control" id="n_tema" name="n_tema">
+                            </div>
+
+                            <div class="col-6">
+                            <label for="n_estatus" class="col-sm-12 col-form-label text-center">Estado de registro</label>
+                            <select name="n_estatus" id="n_estatus" aria-label="Default select" class="form-control" required>
+                                <option value="">Seleccionar una opcion</option>
+                                <option value="1">Califiado</option>
+                                <option value="2">En Espera</option>
+                            </select>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <div class="col-12">
+                                <label for="n_realizo" class="col-sm-12 col-form-label text-center">Persona que Califico</label>
+                                <input type="text" class="form-control" id="n_realizo" name="n_realizo">
+                            </div>
+                        </div>
+                        
+                        <div class="modal-footer justify-content-center">
+                            <button type="button" class="btn btn-secondary"
+                                data-bs-dismiss="modal">CANCELAR</button>
+                            <button type="submit" class="btn btn-primary">REGISTRAR</button>
+                        </div>
+                        <script>
+
+                            /********* formato *****************************/
+                            $.fn.datepicker.dates['es'] = {
+                                days: ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"],
+                                daysShort: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
+                                daysMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
+                                months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+                                monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dec"]
+                            };
+                            /********* fecha registro *****************************/
+                            $('#datepicker').datepicker({
+                                format: "yyyy-mm-dd",
+                                language: "es",
+                                keyboardNavigation: false,
+                                forceParse: false,
+                                autoclose: false,
+                                orientation: "auto left"
+                
+                            });
+                        </script>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
