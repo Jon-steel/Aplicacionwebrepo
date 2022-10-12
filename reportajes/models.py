@@ -22,6 +22,7 @@ class reporteross(models.Model):
     nombre = models.CharField(max_length=100)
     telefono = models.CharField(max_length=10)
     correo = models.CharField(max_length=100)
+    contrasena = models.CharField(max_length=50)
     # contrasena = models.CharField(max_length=50)
 
     def __str__(self):
@@ -33,6 +34,7 @@ class camarografo(models.Model):
     nombre = models.CharField(max_length=100)
     telefono = models.CharField(max_length=10)
     correo = models.CharField(max_length=100)
+    contrasena = models.CharField(max_length=50)
     # contrasena = models.CharField(max_length=50)
 
     def __str__(self):

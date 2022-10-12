@@ -27,6 +27,6 @@ urlpatterns = [
     path ('camarografoadministrador',views.camarografoadministrador, name="camarografoadministrador"),
     # privilegios de usuarios
     path ('usuarioadministrador',views.usuarioadministrador, name="usuarioadministrador"),
-    # login y logout
-    # path ('logout/', views.logout, name="logout"),
+    # editor de usuario
+    path ('editarusuario',views.editarusuario, name="editarsuario"),
     ]

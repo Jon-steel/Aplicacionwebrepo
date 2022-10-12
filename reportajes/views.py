@@ -14,13 +14,9 @@ def session_camarografos(request):
 # sesion usuarios
 def session_usuarios(request):
     return render(request, "sesiones_usuarios.html")
-
-# salir de la sesion
-# def logout(request):
-#     logout(request)
-#     messages.info(request, "Saliste exitosamente")
-#     return redirect, "main:index.html"
-
+# editar usuario
+def editarsuario(request):
+    return render(request, "modulo_editarusuario.html")
 # administrador master
 def administrador(request):
     lista_reportajes = reportaje.objects.all()
