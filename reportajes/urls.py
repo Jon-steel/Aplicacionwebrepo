@@ -28,5 +28,5 @@ urlpatterns = [
     # privilegios de usuarios
     path ('usuarioadministrador',views.usuarioadministrador, name="usuarioadministrador"),
     # editor de usuario
-    path ('editarusuario',views.editarusuario, name="editarsuario"),
+    # path ('editarusuario',views.editarusuario, name="editarsuario"),
     ]

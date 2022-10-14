@@ -13,7 +13,7 @@ class reportaje(models.Model):
     realizo = models.CharField(max_length=150)
     estatus = models.CharField(max_length=50)
 
-    def __str__(self):
+    def __str__(self):  
         texto = "{0}({1})({2} Reportero)"
         return texto.format(self.disco, self.camarografo, self.reportero)
 
