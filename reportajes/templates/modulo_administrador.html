@@ -25,6 +25,7 @@
                 <thead class="table-inverse">
                     <tr class="text-center">
                         <th>Numero</th>
+                        <!-- <th>Fecha</th> -->
                         <th>Disco</th>
                         <th>Reportero</th>
                         <th>Camarografo</th>
@@ -40,6 +41,7 @@
                 {% for c in reportajes %}
                     <tr class="text-center">
                         <td>{{forloop.counter}}</td>
+                        <!-- <td id="fecha{{c.disco}}">{{c.fecha}}</td> -->
                         <td>{{c.disco}}</td>
                         <td id="reportero{{c.disco}}">{{c.reportero}}</td>
                         <td id="camarografo{{c.disco}}">{{c.camarografo}}</td>
@@ -71,7 +73,7 @@
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
                 aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content">
+            <div class="modal-content col-lg-12">
                 <div class="modal-header justify-content-center">
                     <div class="justify-content-center" id="contenedor">
                         <img class="imgform" id="titulo" src="../static/image/AMX.svg" alt="">
@@ -80,35 +82,40 @@
                 <div class="modal-body">
                     <form action="/alta_reportaje/" method="post"> {% csrf_token %}
                         <div class="form-group.row.py-0">
-                            <h3 class="text-center">Formulario de Registro</h3>
+                            <h3 class="text-center">Registro de Reportajes</h3>
                         </div>
-                        <div class="form-group row">
-                            <label for="id_card" class="col-sm-5 col-form-label text-center">Indentificador de
+                        <div class="form-group row justify-content-center">
+                            <label for="id_card" class="col-sm-8 col-form-label text-center justify-content-center">Indentificador de
                                 Registro</label>
-                            <div class="col-sm-7"><input type="text" class="form-control" name="id_card"
-                                    id="id_card" placeholder="Ingrese el Indentificador" minlength="9"
-                                    maxlength="9" required>
+                            <div class="col-sm-6"><input type="text" class="form-control" name="id_card"
+                                    id="id_card" placeholder="Ingrese el Indentificador">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <div class="col-6">
-                            <label for="n_reportero" class="col-form-label text-center">Nombre del Reportero</label>
+                            <div class="col-4">
+                            <label for="n_reportero" class="col-form-label text-center">Reportero</label>
                             <select name="n_reportero" id="n_reportero" aria-label="Default select" class="form-control" required>
-                                <option value="">Seleccionar Reportero</option>
-                                <option value="1">Marisol Ordóñez</option>
-                                <option value="2">Oyuky Gomez</option>
+                                <option>Seleccionar</option>
+                                {% if reporteross %}
+                                    {% for c in reporteross %}
+                                    <option value="c.reportero">{{c.nombre.all}}</option>
+                                    {% endfor %}
+                                {% else %}
+                                    <option value="">No hay datos</option>
+                                {% endif %}
+                                <!-- <option value="2">Oyuky Gomez</option>
                                 <option value="3">Melisa López</option>
                                 <option value="4">Jerzayn Frausto</option>
                                 <option value="5">Jesús Lopez</option>
                                 <option value="6">Raúl García</option>
-                                <option value="7">Edgar Galicia</option>
+                                <option value="7">Edgar Galicia</option> -->
                               </select>
                             </div>
 
-                        <div class="col-6">
+                        <div class="col-4">
                             <label for="n_camarografo" class=" col-form-label text-center">Camarografo</label>
                             <select name="n_camarografo" id="n_camarografo" aria-label="Default select" class="form-control" required>
-                                <option value="">Seleccionar Camarografo</option>
+                                <option value="">Seleccionar</option>
                                 <option value="1">Jesús García</option>
                                 <option value="2">Cristian Sánchez</option>
                                 <option value="3">Cristian Moreno</option>
@@ -123,6 +130,12 @@
                                 <option value="12">Daniel Garduño</option>
                               </select>
                         </div>
+
+                        <div class="col-4">
+                            <label for="n_tema" class="col-sm-12 col-form-label">Tema</label>
+                            <input type="text" class="form-control" id="n_tema" name="n_tema">
+                        </div>
+
                         </div>
                         
                         <!-- <div class="form-group row">
@@ -141,42 +154,39 @@
 
                         <div class="form-group row">
                             <div class="col-6">
-                                <label for="n_clip" class="col-sm-12 col-form-label">Clips</label>
+                                <label for="n_clip" class="col-sm-6 col-form-label">Clips</label>
                                 <input type="text" class="form-control" id="n_clip" name="n_clip">
                             </div>
 
                             <div class="col-6">
-                                <label for="n_clipdiferentes" class="col-sm-12 col-form-label">Clip Distinto</label>
+                                <label for="n_clipdiferentes" class="col-sm-7 col-form-label">Clip Distinto</label>
                                 <input type="text" class="form-control" id="n_clipdiferentes" name="n_clipdiferentes">
                             </div>
 
                             <div class="col-12">
-                                <label for="n_descripcion" class="col-sm-12 col-form-label">Descripcion</label>
+                                <label for="n_descripcion" class="col-sm-4 col-form-label">Descripcion</label>
                                 <input type="text" class="form-control" id="n_descripcion" name="n_descripcion">
                             </div>
 
-                            <div class="col-6">
-                                <label for="n_tema" class="col-sm-12 col-form-label">Tema</label>
-                                <input type="text" class="form-control" id="n_tema" name="n_tema">
-                            </div>
+                            
 
-                            <div class="col-6">
+                            <!-- <div class="col-6">
                             <label for="n_estatus" class="col-sm-12 col-form-label text-center">Estado de registro</label>
                             <select name="n_estatus" id="n_estatus" aria-label="Default select" class="form-control" required>
                                 <option value="">Seleccionar una opcion</option>
                                 <option value="1">Califiado</option>
                                 <option value="2">En Espera</option>
                             </select>
-                            </div>
+                            </div> -->
                         </div>
 
 
-                        <div class="form-group row">
+                        <!-- <div class="form-group row">
                             <div class="col-12">
                                 <label for="n_realizo" class="col-sm-12 col-form-label text-center">Persona que Califico</label>
                                 <input type="text" class="form-control" id="n_realizo" name="n_realizo">
                             </div>
-                        </div>
+                        </div> -->
                         
                         <div class="modal-footer justify-content-center">
                             <button type="button" class="btn btn-secondary"

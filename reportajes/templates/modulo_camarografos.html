@@ -47,7 +47,7 @@
                         <td id="clipdiferetes{{c.disco}}">{{c.clipdiferetes}}</td>
                         <td id="descripcion{{c.disco}}">{{c.descripcion}}</td>
                         <td id="tema{{c.disco}}">{{c.tema}}</td>
-                        <td id="estatus{{c.disco}}">{{c.estatus}}</td>
+                        <td id="estatus{{c.disco}}"><button class="btn-success" >Estatus</button></td>
                         <td>
                         <button id="actualizar" value="{{c.disco}}" class="btn btn-info px-3 me-2 actualizar">
                             <i class="fas fa-fw fa-edit"></i>
@@ -88,11 +88,11 @@
                             <div class="col-sm-7"><input type="text" class="form-control" name="id_card"
                                     id="id_card" placeholder="Ingrese el Indentificador" minlength="9"
                                     maxlength="9" required>
-                            </div>
+                            </div>   
                         </div>
                         <div class="form-group row">
                             <div class="col-6">
-                            <label for="n_reportero" class="col-form-label text-center">Nombre del Reportero</label>
+                            <label for="n_reportero" class="col-form-label text-center"> Reportero</label>
                             <select name="n_reportero" id="n_reportero" aria-label="Default select" class="form-control" required>
                                 <option value="">Seleccionar Reportero</option>
                                 <option value="1">Marisol Ordóñez</option>
@@ -140,14 +140,19 @@
                         </div>
 
                         <div class="form-group row">
-                            <div class="col-6">
-                                <label for="n_clip" class="col-sm-12 col-form-label">Clips</label>
+                            <div class="col-4">
+                                <label for="n_clip" class="col-sm-4 col-form-label">Clips</label>
                                 <input type="text" class="form-control" id="n_clip" name="n_clip">
                             </div>
 
-                            <div class="col-6">
+                            <div class="col-4">
                                 <label for="n_clipdiferentes" class="col-sm-12 col-form-label">Clip Distinto</label>
                                 <input type="text" class="form-control" id="n_clipdiferentes" name="n_clipdiferentes">
+                            </div>
+
+                            <div class="col-4">
+                                <label for="n_tema" class="col-sm-4 col-form-label">Tema</label>
+                                <input type="text" class="form-control" id="n_tema" name="n_tema">
                             </div>
 
                             <div class="col-12">
@@ -155,28 +160,25 @@
                                 <input type="text" class="form-control" id="n_descripcion" name="n_descripcion">
                             </div>
 
-                            <div class="col-6">
-                                <label for="n_tema" class="col-sm-12 col-form-label">Tema</label>
-                                <input type="text" class="form-control" id="n_tema" name="n_tema">
-                            </div>
+                           
 
-                            <div class="col-6">
+                            <!-- <div class="col-6">
                             <label for="n_estatus" class="col-sm-12 col-form-label text-center">Estado de registro</label>
                             <select name="n_estatus" id="n_estatus" aria-label="Default select" class="form-control" required>
                                 <option value="">Seleccionar una opcion</option>
                                 <option value="1">Califiado</option>
                                 <option value="2">En Espera</option>
                             </select>
-                            </div>
+                            </div> -->
                         </div>
 
 
-                        <div class="form-group row">
+                        <!-- <div class="form-group row">
                             <div class="col-12">
                                 <label for="n_realizo" class="col-sm-12 col-form-label text-center">Persona que Califico</label>
                                 <input type="text" class="form-control" id="n_realizo" name="n_realizo">
                             </div>
-                        </div>
+                        </div> -->
                         
                         <div class="modal-footer justify-content-center">
                             <button type="button" class="btn btn-secondary"

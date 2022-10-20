@@ -30,7 +30,7 @@ def administradorreporteros(request):
     lista_reporteros = reporteross.objects.all()
     
     data = {
-        'reportajes': lista_reporteros,
+        'report': lista_reporteros,
     }
     return render(request, "modulo_administrador_reporteros.html",data)
 
@@ -38,7 +38,7 @@ def administradorcamarografos(request):
     lista_camarografos = camarografo.objects.all()
     
     data = {
-        'reportajes': lista_camarografos,
+        'camara': lista_camarografos,
     }
     return render(request, "modulo_administrador_camarografos.html",data)
 
