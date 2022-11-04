@@ -29,5 +29,4 @@ urlpatterns = [
     path ('usuarioadministrador',views.usuarioadministrador, name="usuarioadministrador"),
     # editor de usuario
     # path ('editarusuario',views.editarusuario, name="editarsuario"),
-    path('export/', views.export_pdf, name="export-pdf" ),
     ]
