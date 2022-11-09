@@ -71,7 +71,7 @@
                         </div>
                     </div>
                     <div class="modal-body">
-                        <form action="/alta_camarografo/" method="post"> {% csrf_token %}
+                        <form action="/alta_camarografo/" method="post" class="needs-validation" novalidate> {% csrf_token %}
                             <div class="form-group.row.py-2">
                                 <h3 class="text-center">Registro de Camarografos</h3>
                             </div>
@@ -79,24 +79,52 @@
                                 <label for="id_camarografo" class="col-sm-5 col-form-label text-center">Indentificador del Camarografo</label>
                                 <div class="col-sm-5"><input type="text" class="form-control" name="id_camarografo"
                                         id="id_camarografo" placeholder="Ingresa el codigo del camarografo" minlength="10"
-                                        maxlength="20" required></div>
+                                        maxlength="20" required>
+                                        <div class="valid-feedback">
+                                            <!-- Todo bien -->
+                                        </div>
+                                        <div class="invalid-feedback">
+                                            Indentificador requerido
+                                        </div>
+                                </div>
                             </div>
                             <div class="form-group row py-0">
                                 <label for="c_nombre" class="col-sm-5 col-form-label text-center">Nombre Completo</label>
                                 <div class="col-sm-5"><input type="text" class="form-control" name="c_nombre"
                                         id="c_nombre" placeholder="Ingresar Nombre" minlength="10"
-                                        maxlength="50" required></div>
+                                        maxlength="50" required>
+                                        <div class="valid-feedback">
+                                            <!-- Todo bien -->
+                                        </div>
+                                        <div class="invalid-feedback">
+                                            Nombre completo requerido
+                                        </div>    
+                                </div>
                             </div>
                             <div class="form-group row py-0">
                                 <label for="c_telefono" class="col-sm-5 col-form-label text-center">Numero Telefonico</label>
                                 <div class="col-sm-5"><input type="text" class="form-control" name="c_telefono"
                                         id="c_telefono" placeholder="Ingresar Telefono" minlength="10"
-                                        maxlength="10" required></div>
+                                        maxlength="10" required>
+                                        <div class="valid-feedback">
+                                            <!-- Todo bien -->
+                                        </div>
+                                        <div class="invalid-feedback">
+                                            Telefono requerido
+                                        </div>
+                                </div>
                             </div>
                             <div class="form-group row py-0">
                                 <label for="c_correo" class="col-sm-5 col-form-label text-center">Correo Electronico</label>
                                 <div class="col-sm-5"><input type="text" class="form-control" name="c_correo"
-                                        id="c_correo" placeholder="Ingrese su Correo" ></div>
+                                        id="c_correo" placeholder="Ingrese su Correo" required >
+                                        <div class="valid-feedback">
+                                            <!-- Todo bien -->
+                                        </div>
+                                        <div class="invalid-feedback">
+                                            Correo requerido
+                                        </div>    
+                                </div>
                             </div>
 
                             <div class="modal-footer justify-content-center">

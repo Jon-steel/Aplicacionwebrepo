@@ -71,7 +71,7 @@
                         </div>
                     </div>
                     <div class="modal-body">
-                        <form action="/alta_report/" method="post"> {% csrf_token %}
+                        <form action="/alta_report/" method="post" class="needs-validation" novalidate> {% csrf_token %}
                             <div class="form-group.row.py-2">
                                 <h3 class="text-center">Registro Reporteros</h3>
                             </div>
@@ -79,24 +79,52 @@
                                 <label for="id_reportero" class="col-sm-5 col-form-label text-center">Indentificador </label>
                                 <div class="col-sm-5"><input type="text" class="form-control" name="id_reportero"
                                         id="id_reportero" placeholder="Ingresa el codigo del Taller" minlength="10"
-                                        maxlength="20" required></div>
+                                        maxlength="20" required>
+                                        <div class="valid-feedback">
+                                            <!-- Todo bien -->
+                                        </div>
+                                        <div class="invalid-feedback">
+                                            Indentificador requerido
+                                        </div>
+                                </div>
                             </div>
                             <div class="form-group row py-0">
                                 <label for="r_nombre" class="col-sm-5 col-form-label text-center">Nombre Completo</label>
                                 <div class="col-sm-5"><input type="text" class="form-control" name="r_nombre"
                                         id="r_nombre" placeholder="Ingresar Nombre" minlength="10"
-                                        maxlength="50" required></div>
+                                        maxlength="50" required>
+                                        <div class="valid-feedback">
+                                            <!-- Todo bien -->
+                                        </div>
+                                        <div class="invalid-feedback">
+                                            Nombre completo requerido
+                                        </div>
+                                </div>
                             </div>
                             <div class="form-group row py-0">
                                 <label for="r_telefono" class="col-sm-5 col-form-label text-center">Numero Telefonico</label>
                                 <div class="col-sm-5"><input type="text" class="form-control" name="r_telefono"
                                         id="r_telefono" placeholder="Ingresar Telefono" minlength="10"
-                                        maxlength="10" required></div>
+                                        maxlength="10" required>
+                                        <div class="valid-feedback">
+                                            <!-- Todo bien -->
+                                        </div>
+                                        <div class="invalid-feedback">
+                                            Telefono requerido
+                                        </div>
+                                </div>
                             </div>
                             <div class="form-group row py-0">
                                 <label for="r_correo" class="col-sm-5 col-form-label text-center">Correo Electronico</label>
                                 <div class="col-sm-5"><input type="text" class="form-control" name="r_correo"
-                                        id="r_correo" placeholder="Ingrese su Correo" ></div>
+                                        id="r_correo" placeholder="Ingrese su Correo" required>
+                                        <div class="valid-feedback">
+                                            <!-- Todo bien -->
+                                        </div>
+                                        <div class="invalid-feedback">
+                                            Correo requerido
+                                        </div>
+                                </div>
                             </div>
 
                             <div class="modal-footer justify-content-center">
@@ -112,6 +140,7 @@
     </div>
 </div>
 
+
 <!-- editar formulario de reportero -->
 <div class="row justify-content-center">
     <div class="col-sm-12 col-md-4 col-lg-4 col-xl-8">
@@ -126,17 +155,23 @@
                         <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
                     </div>
                     <div class="modal-body">
-                        <form action="/actualizar_report/" method="POST">{% csrf_token %}
+                        <form action="/actualizar_report/" method="POST" class="needs-validation" novalidate>{% csrf_token %}
 
                             <div class="form-group row">
                                 <label for="id_reportero" class="col-sm-3 col-form-label text-center">Id de Taller:
                                 </label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" readonly name="id_reportero_a"
-                                        id="id_reportero_a" placeholder=""
-                                        minlength="8" maxlength="8" required>
+                                        id="id_reportero_a" required>
+                                        <div class="valid-feedback">
+                                            Todo bien
+                                        </div>
+                                        <div class="invalid-feedback">
+                                            Es necesario un indentificador
+                                        </div>
                                 </div>
                             </div>
+
                             <div class="form-group row">
                                 <label for="r_nombre" class="col-sm-3 col-form-label text-center">Nombre de
                                     reportero: </label>

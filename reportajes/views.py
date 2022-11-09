@@ -100,8 +100,8 @@ def alta_reportajecamarografo(request):
     clipdiferetes = request.POST['n_clipdiferentes']
     descripcion = request.POST['n_descripcion']
     tema = request.POST['n_tema']
-    realizo = request.POST['n_realizo']
-    estatus = request.POST['n_estatus']
+    # realizo = request.POST['n_realizo']
+    # estatus = request.POST['n_estatus']
 
     reporte=reportaje.objects.create(
         disco=disco,
@@ -112,8 +112,8 @@ def alta_reportajecamarografo(request):
         clipdiferetes=clipdiferetes,
         descripcion=descripcion,
         tema=tema,
-        realizo=realizo,
-        estatus=estatus
+        # realizo=realizo,
+        # estatus=estatus
     )
     return redirect(camarografoadministrador)
 def alta_report(request):
