@@ -1,5 +1,40 @@
 $(document).ready(function () {
  
+// actualizacion de reportajes
+  $(document).on('click', '#actualizartajes', function () {
+      var disco = $(this).val();
+      var reportero = $('#reportero' + disco).text();
+      var camarografo = $('#camarografo' + disco).text();
+      var fecha = $('#fecha' + disco).text();
+      var clip = $('#clip' + disco).text();
+      var clipdiferetes = $('#clipdiferetes' + disco).text();
+      var descripcion = $('#descripcion' + disco).text();
+      var tema = $('#tema' + disco).text();
+
+      console.log(disco);
+      console.log(reportero);
+      $('#actualizar_reportaje').modal('show');
+      $('#id_card_a').val(disco);
+      $('#n_reportero_a').val(reportero);
+      $('#n_camarografo_a').val(camarografo);
+      $('#n_fecha_a').val(fecha);
+      $('#n_clip_a').val(clip);
+      $('#n_clipdiferentes_a').val(clipdiferetes);
+      $('#n_descripcion_a').val(descripcion);
+      $('#n_tema_a').val(tema);
+
+  });
+
+// eliminar reportajes 
+  $(document).on('click', '#eliminartajes', function () {
+    var disco = $(this).val();
+    
+    $('#eliminar_reportaj').modal('show');
+    $('#id_card_e').val(disco);
+    $('#n_reportero_e').val(disco);
+
+  });
+  
 // actualizacion de reporteros
   $(document).on('click', '#actualizar', function () {
       var id_reportero = $(this).val();

@@ -4,6 +4,8 @@ from . import views
 urlpatterns = [
     path ('',views.home),
     path ('alta_reportaje/',views.alta_reportaje),
+    path ('actualizar_reportaje/',views.actualizar_reportaje, name="actualizar_reportaje"),
+    path ('eliminar_reportaje/',views.eliminar_reportaje, name="eliminar_reportaje"),
     path ('alta_reportajecamarografo/',views.alta_reportajecamarografo),
     # reporteros
     path ('alta_report/',views.alta_report),
@@ -29,4 +31,6 @@ urlpatterns = [
     path ('usuarioadministrador',views.usuarioadministrador, name="usuarioadministrador"),
     # editor de usuario
     # path ('editarusuario',views.editarusuario, name="editarsuario"),
+    # enlace pdf
+    # path('export/', views.export_pdf, name="export-pdf" ),
     ]

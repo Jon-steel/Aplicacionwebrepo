@@ -21,12 +21,18 @@ def editarsuario(request):
     return render(request, "modulo_editarusuario.html")
 # administrador master
 def administrador(request):
+    lista_report = reporteross.objects.all()   
     lista_reportajes = reportaje.objects.all()
-
-    data = {
+    lista_2 = camarografo.objects.all()
+    lista = {
+        'reportero_1': lista_report,
         'reportajes': lista_reportajes,
-    } 
-    return render(request, "modulo_administrador.html",data)
+        'camarografo': lista_2,
+
+    }
+ 
+    return render(request, "modulo_administrador.html",lista)
+
 
 def administradorreporteros(request):
     lista_reporteros = reporteross.objects.all()
@@ -73,8 +79,8 @@ def alta_reportaje(request):
     clipdiferetes = request.POST['n_clipdiferentes']
     descripcion = request.POST['n_descripcion']
     tema = request.POST['n_tema']
-    realizo = request.POST['n_realizo']
-    estatus = request.POST['n_estatus']
+    # realizo = request.POST['n_realizo']
+    # estatus = request.POST['n_estatus']
 
     reporte=reportaje.objects.create(
         disco=disco,
@@ -85,10 +91,40 @@ def alta_reportaje(request):
         clipdiferetes=clipdiferetes,
         descripcion=descripcion,
         tema=tema,
-        realizo=realizo,
-        estatus=estatus
+        # realizo=realizo,
+        # estatus=estatus
     )
     return redirect(administrador)
+
+# actualizar reportajes administrador
+def actualizar_reportaje(request):
+    disco = request .POST['id_card_a']
+    reportero = request.POST['n_reportero_a']
+    camarografo = request.POST['n_camarografo_a']
+    fecha = request.POST['n_fecha_a']
+    clip = request.POST['n_clip_a']
+    clipdiferetes = request.POST['n_clipdiferentes_a']
+    descripcion = request.POST['n_descripcion_a']
+    tema = request.POST['n_tema_a']
+
+    reporta = reporte.objects.get(disco=disco)
+    reporta.disco = disco
+    reporta.reportero = reportero
+    reporta.camarografo = camarografo
+    reporta.fecha = fecha
+    reporta.clip = clip
+    reporta.clipdiferetes = clipdiferetes
+    reporta.descripcion = descripcion
+    reporta.tema = tema  
+    reporta.save()
+    return redirect(administrador)
+
+# eliminar reportajes administrador
+def eliminar_reportaje(request):
+    disco = request.POST['id_card_e']
+    reporta = reporte.objects.get(disco=disco)
+    reporta.delete()
+    return redirect(administrador) 
 
 # alta reportaje administrador camrografo
 def alta_reportajecamarografo(request):
